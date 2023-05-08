@@ -1,3 +1,7 @@
+
+<img src="My-First-Github-Action.png" />
+
+
 # Github Actions katas
 
 Look into the labs folder for exercises
