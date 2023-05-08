@@ -1,52 +1,52 @@
-name: Java CI
+name: Docker-images_with_test
 on: push
-env: # Set the secret as an input
+env:
   docker_username: ${{ github.actor }}
   docker_password: ${{ secrets.GITHUB_TOKEN }}
   GIT_COMMIT: ${{ github.sha }}
 jobs:
-  Clone-down:
-    name: Clone down repo
+  Repo-down:
+    name: clone repo
     runs-on: ubuntu-latest
     container: gradle:6-jdk11
     steps:
     - uses: actions/checkout@v3
-    - name: Upload Repo
+    - name: upload le-repo
       uses: actions/upload-artifact@v3
       with:
-        name: code
+        name: Le-code
         path: .
-  Build:
+  le-build:
     runs-on: ubuntu-latest
-    needs: Clone-down
+    needs: Repo-down
     container: gradle:6-jdk11
     steps:
-    - name: Download code
+    - name: get code
       uses: actions/download-artifact@v3
       with:
-        name: code
-        path: . 
-    - name: Build with Gradle
+        name: Le-code
+        path: .
+    - name: Build-an-app
       run: chmod +x ci/build-app.sh && ci/build-app.sh
-    - name: Test with Gradle
+    - name: test-an-app  
       run: chmod +x ci/unit-test-app.sh && ci/unit-test-app.sh
-    - name: Upload Repo
+    - name: upload repository
       uses: actions/upload-artifact@v3
       with:
-        name: code
+        name: Le-code
         path: .
   Docker-image:
     runs-on: ubuntu-latest
-    needs: [Build]
+    needs: [le-build]
     permissions:
       packages: write
     steps:
-    - name: Download code
+    - name: down le-code
       uses: actions/download-artifact@v3
       with:
-        name: code
+        name: Le-code
         path: .
-    - name: build docker
+    - name: build le-docker
       run: chmod +x ci/build-docker.sh && ci/build-docker.sh
-    - name: push docker
+    - name: push le-docker
       run: chmod +x ci/push-docker.sh && ci/push-docker.sh
