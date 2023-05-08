@@ -1,4 +1,4 @@
-*What do you think about the level?*
+## What do you think about the level?
 
 I managed to complete the labs and liked the content and exercises a lot!!
 But the thing that was going on inside each step / each Github Actions was not 100% crystal clear to me. In the sense that I’m not sure I understand everything that was going on.
@@ -14,7 +14,7 @@ Thanks for a nice intro to Github Actions!
 
 
 
-*Do you have ideas or suggestions for new courses and events?*
+## Do you have ideas or suggestions for new courses and events?
 
 Perhaps some more arround how github actions (CI) can be used in best practice regarding different environments (build locally), (deploy to test), (deploy to production), (if production deployment faills rollbaack to last working deploy..) and so on. Like a workshop doing an imaginary cloud app for a company or something.
 That could be a good practical addition on top of the stuff we learned today!
