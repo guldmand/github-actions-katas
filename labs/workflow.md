@@ -1,8 +1,6 @@
-## Workflow
+## Seperate your workflow
 
 When you have larger or more complex projects, you’ll want separate jobs to do separate things in paralell.
-
-
 
 Up until now, we have had a job called `Build` both for the build and test, but that is not necessarily descriptive.
 
@@ -86,7 +84,7 @@ jobs:
     runs-on: ubuntu-latest
     container: gradle:6-jdk11
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     - name: Upload Repo
       uses: actions/upload-artifact@v3
       with:
